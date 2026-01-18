@@ -5,7 +5,6 @@ extends CharacterBody2D
 var velocidad = 100
 var animacion = ""
 
-var can_move: bool = true
 
 @onready var animaciones = $AnimatedSprite2D
 @onready var mira = $RayCast2D
@@ -16,14 +15,6 @@ func _ready() -> void:
 func _physics_process(delta):
 	velocity = Vector2.ZERO
 	
-	if !can_move:
-		animaciones.play("kris_d_idle")
-		return
-	
-	if mira.is_colliding() and Input.is_action_just_pressed("ui_accept"):
-		var interactuable_actual = mira.get_collider()
-		#if interactuable_actual.is_in_group("Objetos_Interactuables"):
-		interactuable_actual.interactuar()
 	
 	#--------ARRIBA
 	if Input.is_action_pressed("ui_up"):

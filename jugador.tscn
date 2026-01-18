@@ -1,11 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://cavxgwu1x363p"]
+[gd_scene load_steps=24 format=3 uid="uid://cavxgwu1x363p"]
 
 [ext_resource type="Texture2D" uid="uid://8b35x63f5uxi" path="res://sprites/spr_krisd/spr_krisd_0.png" id="1_75jh1"]
 [ext_resource type="Script" uid="uid://20gbb0juy5da" path="res://scripts/jugador.gd" id="1_j66dm"]
 [ext_resource type="Texture2D" uid="uid://domi3jdvmuxeu" path="res://sprites/spr_krisd/spr_krisd_1.png" id="2_j66dm"]
 [ext_resource type="Texture2D" uid="uid://brak55tmxjxl7" path="res://sprites/spr_krisd/spr_krisd_2.png" id="3_e7qlc"]
 [ext_resource type="Texture2D" uid="uid://dbaw6b7keqhnw" path="res://sprites/spr_krisd/spr_krisd_3.png" id="4_1xqlm"]
-[ext_resource type="Script" uid="uid://d3e7q3h3fynpd" path="res://DialogueFunctionResource.gd" id="4_3ook8"]
 [ext_resource type="Texture2D" uid="uid://bt1acw714ubtc" path="res://sprites/spr_krisl/spr_krisl_0.png" id="5_hns4q"]
 [ext_resource type="Texture2D" uid="uid://dr1d387w4wfq2" path="res://sprites/spr_krisl/spr_krisl_1.png" id="6_4g2as"]
 [ext_resource type="Texture2D" uid="uid://bv5qhbyh7eshr" path="res://sprites/spr_krisl/spr_krisl_2.png" id="7_otqpa"]
@@ -21,27 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://dw3o81dmfdcel" path="res://sprites/bg_firstRoom.png" id="18_e7qlc"]
 [ext_resource type="Script" uid="uid://1w1yfodi4kl8" path="res://monster_kid.gd" id="19_hns4q"]
 [ext_resource type="Texture2D" uid="uid://fiwu41lyk50s" path="res://sprites/spr_mkid_dt/spr_mkid_dt_0.png" id="20_4g2as"]
-[ext_resource type="PackedScene" uid="uid://buk818mvq4hxy" path="res://dialogue_area_2d.tscn" id="21_janri"]
-[ext_resource type="Script" uid="uid://dyvw5jonluhau" path="res://DialogueExportResource.gd" id="22_3ook8"]
-[ext_resource type="Script" uid="uid://calip2cm371aq" path="res://DialogueTextResource.gd" id="23_s7luq"]
-[ext_resource type="AudioStream" uid="uid://7uo5wltfcuyf" path="res://Sounds/snd_text.wav" id="24_vpxur"]
-
-[sub_resource type="Resource" id="Resource_s7luq"]
-script = ExtResource("4_3ook8")
-target_path = NodePath("../Jugador/AnimatedSprite2D")
-function_name = "play"
-function_argument = [null]
-metadata/_custom_type_script = "uid://d3e7q3h3fynpd"
-
-[sub_resource type="Resource" id="Resource_vpxur"]
-script = ExtResource("23_s7luq")
-speaker_img = ExtResource("4_1xqlm")
-text = "sdfdsfsdfsdfsdfsfd"
-text_sound = ExtResource("24_vpxur")
-metadata/_custom_type_script = "uid://calip2cm371aq"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjv2d"]
-size = Vector2(59, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otqpa"]
 size = Vector2(9, 15)
@@ -207,13 +185,6 @@ polygon = PackedVector2Array(-252.96143, 124.69635, -252.12195, 21.614029, -256.
 
 [node name="objetos" type="Node2D" parent="."]
 
-[node name="DialogueArea2D" parent="objetos" instance=ExtResource("21_janri")]
-dialogue = Array[ExtResource("22_3ook8")]([SubResource("Resource_s7luq"), SubResource("Resource_vpxur")])
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="objetos/DialogueArea2D"]
-position = Vector2(-139.5, -26.5)
-shape = SubResource("RectangleShape2D_sjv2d")
-
 [node name="Monster_kid" type="CharacterBody2D" parent="objetos"]
 collision_layer = 3
 collision_mask = 3
@@ -240,3 +211,8 @@ sprite_frames = SubResource("SpriteFrames_ydo8w")
 animation = &"kris_d"
 
 [node name="Camera2D" type="Camera2D" parent="objetos/Jugador"]
+offset = Vector2(-192.545, 0)
+zoom = Vector2(4, 4)
+
+[node name="RayCast2D" type="RayCast2D" parent="objetos/Jugador"]
+position = Vector2(-191, 10)
